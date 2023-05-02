@@ -61,8 +61,11 @@ preview: 0
 
 <br/>
 
-### ■ Ioc, DI 컨테이너<br/>
-#### ● 제어의 역전 IoC(Inversion of Control)
+### ■ Ioc, DI 컨테이너
+
+<br/>
+
+### ● 제어의 역전 IoC(Inversion of Control)
 &nbsp;&nbsp;<b>: 프로그램의 제어 흐름을 직접 제어하는 것이 아니라 외부에서 관리하는 것</b>
 
 &nbsp;&nbsp;&nbsp;○ <b>프레임워크 - 프레임워크가 내가 작성한 코드를 제어하고 대신 실행(JUnit)</b><br/>

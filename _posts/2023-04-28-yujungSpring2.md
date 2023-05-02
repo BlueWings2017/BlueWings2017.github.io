@@ -41,7 +41,7 @@ preview: 0
 - SRP, DIP, OCP 적용
 
 <br/>
-#### ● SRP 단일 책임 원칙
+### ● SRP 단일 책임 원칙
 &nbsp;&nbsp;<b>: 한 클래스는 하나의 책임만 가져야 한다.</b>
 > -&nbsp;클라이언트 객체는 직접 구현 객체를 생성하고 연결, 실행하는 다양한 책임을 가지고 있음<br/>
 > -&nbsp;SRP 단일 책임 원칙을 따르면서 관심사를 분리<br/>
@@ -49,11 +49,11 @@ preview: 0
 > -&nbsp;클라이언트 객체는 실행하는 책임만 담당
 
 <br/>
-#### ● DIP 의존관계 역전 원칙
+### ● DIP 의존관계 역전 원칙
 &nbsp;&nbsp;<b>: 프로그래머는 “추상화에 의존해야지, 구체화에 의존하면 안된다.”</b>
 
 <br/>
-#### ● OCP
+### ● OCP
 &nbsp;&nbsp;<b>: 소프트웨어 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야 한다.</b>
 > -&nbsp;다형성 사용하고 클라이언트가 DIP를 지킴<br/>
 > -&nbsp;애플리케이션을 사용 영역과 구성 영역으로 나눔<br/>
@@ -70,12 +70,12 @@ preview: 0
 
 <br/>
 
-#### ● 의존관계 주입 DI(Dependency Injection)
+### ● 의존관계 주입 DI(Dependency Injection)
 &nbsp;&nbsp;- 의존관계는 <b>정적인 클래스 의존 관계와, 실행 시점에 결정되는 동적인 객체(인스턴스) 의존 관계</b> 둘을 분리해서 생각해야 한다.
 
 <br/>
 
-#### ● IoC 컨테이너, DI 컨테이너
+### ● IoC 컨테이너, DI 컨테이너
 > AppConfig 처럼 객체를 생성하고 관리하면서 의존관계를 연결해 주는 것<br/>
 > 의존관계 주입에 초점을 맞추어 최근에는 주로 DI 컨테이너<br/>
 > 또는 어샘블러, 오브젝트 팩토리 등으로 불리기도 한다.
@@ -111,15 +111,15 @@ public class AppConfig {
  
 }
 ```
-> -&nbsp;AppConfig에 설정을 구성한다는 뜻의 `@Configuration` 을 붙여준다.<br/>
-> -&nbsp;각 메서드에 `@Bean` 을 붙여준다.. 스프링 컨테이너에 스프링 빈으로 등록<br/>
+> -&nbsp;AppConfig에 설정을 구성한다는 뜻의 `@Configuration`을 붙여준다.<br/>
+> -&nbsp;각 메서드에 `@Bean`을 붙여준다.. 스프링 컨테이너에 스프링 빈으로 등록<br/>
 
 <br/>
 
 ### ■ 스프링 컨테이너<br/>
 
 > -`@Bean`이라 적힌 메서드를 모두 호출해서 반한된 객체를 스프링 컨테이너에 등록(등록된 객체: 스프링 빈)<br/>
-> -스프링 빈은 `@Bean` 이 붙은 메서드의 명을 스프링 빈의 이름으로 사용<br/>
+> -스프링 빈은 `@Bean`이 붙은 메서드의 명을 스프링 빈의 이름으로 사용<br/>
 > -스프링 빈은 `applicationContext.getBean()` 메서드를 사용해서 찾을 수 있다.
 
 <br/>
@@ -144,19 +144,19 @@ ApplicationContext applicationContext = new AnnotationConfigApplicationContext(A
 1. 스프링 컨테이너 생성
 2. 스프링 빈 등록<br/>
   ● 빈 이름<br/>
-  &nbsp;&nbsp;&nbsp;- 빈 이름은 메서드 이름을 사용</br>
+  &nbsp;&nbsp;&nbsp;- 빈 이름은 메서드 이름을 사용<br/>
   &nbsp;&nbsp;&nbsp;- 빈 이름을 직접 부여할 수도 있다.. `@Bean(name="memberService2")`<br/>
   ** <b>빈 이름은 항상 다른 이름을 부여해야 한다</b> **
 
 3. 스프링 빈 의존관계 설정 - 준비
 4. 스프링 빈 의존관계 설정 - 완료<br/>
-&nbsp;- 스프링 컨테이너는 설정 정보를 참고해서 의존관계를 주입(DI)</br>
+&nbsp;- 스프링 컨테이너는 설정 정보를 참고해서 의존관계를 주입(DI)<br/>
 
 <br/>
 ### ■ 스프링 빈 조회 - 기본
 - `ac.getBean(빈이름, 타입)`
 - `ac.getBean(타입)`
-- 조회 대상 스프링 빈이 없으면 예외 발생</br>
+- 조회 대상 스프링 빈이 없으면 예외 발생<br/>
  `NoSuchBeanDefinitionException: No bean named 'xxxxx' available`
  
 
@@ -199,12 +199,12 @@ class ApplicationContextBasicFindTest {
 <br/>
 ### ■ 스프링 빈 조회 - 동일한 타입이 둘 이상
 - 타입으로 조회시 같은 타입의 스프링 빈이 둘 이상이면 오류가 발생
-- `ac.getBeansOfType()` 을 사용하면 해당 타입의 모든 빈을 조회가능
+- `ac.getBeansOfType()`을 사용하면 해당 타입의 모든 빈을 조회가능
 
 
 <br/>
 ### ■ 스프링 빈 조회 - 상속 관계
-- 부모 타입으로 조회하면, 자식 타입도 함께 조회
+- 부모 타입으로 조회하면 자식 타입도 함께 조회
 
 
 <br/>
@@ -247,14 +247,14 @@ class ApplicationContextBasicFindTest {
 #### &nbsp;● <b>BeanDefinition 정보</b>
 
 > -&nbsp;BeanClassName: 생성할 빈의 클래스 명(자바 설정 처럼 팩토리 역할의 빈을 사용하면 없음)<br/>
-> -&nbsp;factoryBeanName: 팩토리 역할의 빈을 사용할 경우 이름, 예) appConfig<br/>
-> -&nbsp;factoryMethodName: 빈을 생성할 팩토리 메서드 지정, 예) memberService<br/>
+> -&nbsp;factoryBeanName: 팩토리 역할의 빈을 사용할 경우 이름. 예) appConfig<br/>
+> -&nbsp;factoryMethodName: 빈을 생성할 팩토리 메서드 지정. 예) memberService<br/>
 > -&nbsp;Scope: 싱글톤(기본값)<br/>
 > -&nbsp;lazyInit: 스프링 컨테이너를 생성할 때 빈을 생성하는 것이 아니라, 실제 빈을 사용할 때까지 최대한
  생성을 지연처리 하는지 여부<br/>
 > -&nbsp;InitMethodName: 빈을 생성하고, 의존관계를 적용한 뒤에 호출되는 초기화 메서드 명<br/>
 > -&nbsp;DestroyMethodName: 빈의 생명주기가 끝나서 제거하기 직전에 호출되는 메서드 명<br/>
-> -&nbsp;Constructor arguments, Properties: 의존관계 주입에서 사용한다. (자바 설정 처럼 팩토리 역할의 빈을 사용하면 없음)
+> -&nbsp;Constructor arguments, Properties: 의존관계 주입에서 사용(자바 설정처럼 팩토리 역할의 빈을 사용하면 없음)
 
 <br/>
 
@@ -281,23 +281,22 @@ class ApplicationContextBasicFindTest {
 
 <br/>
 ### ■ 싱글톤 컨테이너
-&nbsp;&nbsp;&nbsp;- 스프링 컨테이너는 싱글턴 패턴을 적용하지 않아도, 객체 인스턴스를 싱글톤으로 관리<br/>
+&nbsp;&nbsp;&nbsp;- 스프링 컨테이너는 싱글턴 패턴을 적용하지 않아도 객체 인스턴스를 싱글톤으로 관리<br/>
 &nbsp;&nbsp;&nbsp;- 스프링 컨테이너는 싱글톤 컨테이너 역할..싱글톤 객체를 생성하고 관리하는 기능을 싱글톤레지스트리라 한다.<br/>
 &nbsp;&nbsp;&nbsp;- 싱글톤 패턴의 모든 단점을 해결하면서 객체를 싱글톤으로 유지할 수 있다.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 싱글톤 패턴을 위한 지저분한 코드가 들어가지 않아도 된다.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ DIP, OCP, 테스트, private 생성자로 부터 자유롭게 싱글톤을 사용할 수 있다.<br/><br/>
 
-#### &nbsp;● 싱글톤 방식의 주의점
+### &nbsp;● 싱글톤 방식의 주의점
 
-> -&nbsp;싱글톤 패턴이든 스프링 같은 싱글톤 컨테이너를 사용하든 객체 인스턴스를 하나만 생성해서 공유하는
-싱글톤 방식은 여러 클라이언트가 하나의 같은 객체 인스턴스를 공유하기 때문에 싱글톤 객체는 상태를
-유지(stateful)하게 설계하면 안된다.<br/>
+> -&nbsp;싱글톤 패턴이든 스프링 같은 싱글톤 컨테이너를 사용하든 객체 인스턴스를 하나만 생성해서 공유하는 싱글톤 방식은 여러 클라이언트가<br/>
+&nbsp;하나의 같은 객체 인스턴스를 공유하기 때문에 싱글톤 객체는 상태를 유지(stateful)하게 설계하면 안된다.<br/>
 > -&nbsp;스프링 빈의 필드에 공유 값을 설정하면 큰 장애가 발생할 수 있다.<br/><br/>
 > -&nbsp;무상태(stateless)로 설계<br/>
 >> -&nbsp;특정 클라이언트에 의존적인 필드가 있으면 안된다.<br/>
 >> -&nbsp;특정 클라이언트가 값을 변경할 수 있는 필드가 있으면 안된다.<br/>
 >> -&nbsp;가급적 읽기만 가능해야 한다.<br/>
->> -&nbsp;필드 대신에 자바에서 공유되지 않는, 지역변수, 파라미터, ThreadLocal 등을 사용해야 한다.
+>> -&nbsp;필드 대신에 자바에서 공유되지 않는 지역변수, 파라미터, ThreadLocal 등을 사용해야 한다.
 
 <br/>
 ### ■ @Configuration과 싱글톤
@@ -343,7 +342,7 @@ public class OrderServiceImpl implements OrderService {
 > -`@ComponentScan`은 `@Component`가 붙은 모든 클래스를 스프링 빈으로 등록<br/>
 > -스프링 빈의 기본 이름은 클래스명을 사용하되 맨 앞글자만 소문자를 사용
 >> <b>빈 이름 기본 전략:</b> MemberServiceImpl 클래스 → memberServiceImpl<br/>
->> <b>빈 이름 직접 지정:</b> 스프링 빈의 이름을 직접 지정하고 싶으면 ex)&nbsp;`@Component("memberService2")` 로 이름부여
+>> <b>빈 이름 직접 지정:</b> 스프링 빈의 이름을 직접 지정하고 싶으면 ex)&nbsp;`@Component("memberService2")`로 이름부여
 
 
 <br/>
@@ -373,10 +372,10 @@ public class OrderServiceImpl implements OrderService {
 &nbsp;* 권장하는 방법<br/>
 &nbsp;&nbsp;&nbsp;- 설정 정보 클래스의 위치를 프로젝트 최상단에 두는 것 (스프링 부트가 기본으로 제공하는 방법)<br/>
 
-ex) `com.hello`→ 프로젝트 시작 루트, 여기에 AppConfig 같은 메인 설정 정보를 두고 @ComponentScan 애노테이션을 붙이고, `basePackages` 지정은 생략
+ex) `com.hello`→ 프로젝트 시작 루트. 여기에 AppConfig 같은 메인 설정 정보를 두고 @ComponentScan 애노테이션을 붙이고, `basePackages` 지정은 생략
 
 <br/>
-#### &nbsp;● 컴포넌트 스캔 기본 대상
+### &nbsp;● 컴포넌트 스캔 기본 대상
 &nbsp;&nbsp;&nbsp;- `@Component`: 컴포넌트 스캔에서 사용<br/>
 &nbsp;&nbsp;&nbsp;- `@Controlller`: 스프링 MVC 컨트롤러에서 사용<br/>
 &nbsp;&nbsp;&nbsp;- `@Service`: 스프링 비즈니스 로직에서 사용<br/>
@@ -398,7 +397,7 @@ ex) `com.hello`→ 프로젝트 시작 루트, 여기에 AppConfig 같은 메인
 &nbsp;&nbsp;&nbsp;- `excludeFilters`: 컴포넌트 스캔에서 제외할 대상을 지정<br/>
 
 <br/>
-#### &nbsp;● FilterType 옵션
+### &nbsp;● FilterType 옵션
 &nbsp;&nbsp;&nbsp;- ANNOTATION: 기본값, 애노테이션을 인식해서 동작<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ex) `org.example.SameAnnotation`<br/>
 &nbsp;&nbsp;&nbsp;- ASSIGNABLE_TYPE: 지정한 타입과 자식 타입을 인식해서 동작<br/>
@@ -436,7 +435,7 @@ ex) `com.hello`→ 프로젝트 시작 루트, 여기에 AppConfig 같은 메인
 
 ### ■ 다양한 의존관계 주입 방법
 <br/>
-#### &nbsp;● 생성자 주입
+### &nbsp;● 생성자 주입
 &nbsp;&nbsp;: 생성자를 통해서 의존 관계를 주입 받는 방법
 > [ 특징 ]<br/>
 >> 생성자 호출시점에 딱 1번만 호출되는 것이 보장된다.<br/>
@@ -444,7 +443,7 @@ ex) `com.hello`→ 프로젝트 시작 루트, 여기에 AppConfig 같은 메인
 >> <b>★ 생성자가 딱 1개만 있으면 @Autowired를 생략해도 자동 주입 된다.</b> (스프링 빈에만 해당)<br/>
 
 <br/>
-#### &nbsp;● 수정자 주입(setter 주입)
+### &nbsp;● 수정자 주입(setter 주입)
 &nbsp;&nbsp;: setter라 불리는 필드의 값을 변경하는 수정자 메서드를 통해서 의존관계를 주입하는 방법
 > [ 특징 ]<br/>
 >> <b>선택, 변경</b> 가능성이 있는 의존관계에 사용<br/>
@@ -456,7 +455,7 @@ ex) `com.hello`→ 프로젝트 시작 루트, 여기에 AppConfig 같은 메인
 ```
 
 <br/>
-#### &nbsp;● 필드 주입
+### &nbsp;● 필드 주입
 &nbsp;&nbsp;: 필드에 바로 주입하는 방법
 > [ 특징 ]<br/>
 >> 외부에서 변경이 불가능해서 테스트 하기 힘들다는 단점이 있다.<br/>
@@ -464,7 +463,7 @@ ex) `com.hello`→ 프로젝트 시작 루트, 여기에 AppConfig 같은 메인
 >> 스프링 설정을 목적으로 하는 `@Configuration` 같은 곳에서만 특별한 용도로 사용<br/>
 
 <br/>
-#### &nbsp;● 일반 메서드 주입
+### &nbsp;● 일반 메서드 주입
 &nbsp;&nbsp;: 일반 메서드를 통해서 주입 받을 수 있다.
 > [ 특징 ]<br/>
 >> 한번에 여러 필드를 주입 받을 수 있다.<br/>
@@ -474,12 +473,12 @@ ex) `com.hello`→ 프로젝트 시작 루트, 여기에 AppConfig 같은 메인
 
 ### ■ 옵션 처리
 > 자동 주입 대상을 옵션으로 처리하는 방법
->> `@Autowired(required=false)`: 자동 주입할 대상이 없으면 수정자 메서드 자체가 호출 안됨
->> `org.springframework.lang.@Nullable`: 자동 주입할 대상이 없으면 null이 입력된다.
+>> `@Autowired(required=false)`: 자동 주입할 대상이 없으면 수정자 메서드 자체가 호출 안됨<br/>
+>> `org.springframework.lang.@Nullable`: 자동 주입할 대상이 없으면 null이 입력된다.<br/>
 >> `Optional<>`: 자동 주입할 대상이 없으면 `Optional.empty`가 입력된다.
 
 <br/>
-#### &nbsp;● 불변
+### &nbsp;● 불변
 
 - 대부분의 의존관계 주입은 한번 일어나면 애플리케이션 종료시점까지 의존관계를 변경할 일이 없다. 
 - 오히려 대부분의 의존관계는 애플리케이션 종료 전까지 변하면 안된다.(불변)
@@ -489,7 +488,7 @@ ex) `com.hello`→ 프로젝트 시작 루트, 여기에 AppConfig 같은 메인
 
 
 <br/>
-#### &nbsp;● final 키워드
+### &nbsp;● final 키워드
 &nbsp;&nbsp;: 생성자 주입을 사용하면 필드에 `final` 키워드를 사용할 수 있다.
 
 <br/>
@@ -618,13 +617,13 @@ public class AllBeanTest {
 
 <br/>
 
-#### &nbsp;● 로직 분석
+### &nbsp;● 로직 분석
 > -&nbsp;DiscountService는 Map으로 모든 DiscountPolicy를 주입받는데 이때 `fixDiscountPolicy`,`rateDiscountPolicy` 가 주입된다.<br/>
 > -&nbsp;`discount()` 메서드는 discountCode로 fixDiscountPolicy"가 넘어오면 map에서 `fixDiscountPolicy`스프링 빈을 찾아서 실행.. <br/>&nbsp;&nbsp;"rateDiscountPolicy"가 넘어오면 `rateDiscountPolicy`스프링 빈을 찾아서 실행
 
 <br/>
 
-#### &nbsp;● 주입 분석
+### &nbsp;● 주입 분석
 > -&nbsp;`Map<String, DiscountPolicy>`: map의 키에 스프링 빈의 이름을 넣어주고 그 값으로 `DiscountPolicy`타입으로 조회한 모든 스프링 빈을 담아준다.<br/>
 > -&nbsp;`List<DiscountPolicy>`: `DiscountPolicy` 타입으로 조회한 모든 스프링 빈을 담아준다.<br/>
 > -&nbsp;해당하는 타입의 스프링 빈이 없으면 빈 컬렉션이나 Map을 주입
@@ -644,16 +643,16 @@ public class AllBeanTest {
 
 <br/>
 
-#### &nbsp;● 스프링 빈의 라이프사이클
+### &nbsp;● 스프링 빈의 라이프사이클
 > 객체 생성 → 의존관계 주입
 
 <br/>
 
-#### &nbsp;● 스프링 빈의 이벤트 라이프사이클
+### &nbsp;● 스프링 빈의 이벤트 라이프사이클
 > 스프링 컨테이너 생성 → 스프링 빈 생성 → 의존관계 주입 → 초기화 콜백 → 사용 → 소멸전 콜백 → 스프링
 종료
 
-* 초기화 콜백: 빈이 생서오디고 빈의 의존관계 주입이 완료된 후 호출
+* 초기화 콜백: 빈이 생성되고 빈의 의존관계 주입이 완료된 후 호출
 * 소멸전 콜백: 빈이 소멸되기 직전에 호출
 
 
@@ -669,8 +668,6 @@ public class AllBeanTest {
 <br/>
 
 ### ■ 인터페이스 InitializingBean, DisposableBean
-
-<br/>
 
 ```
 public class NetworkClient implements InitializingBean, DisposableBean {
@@ -712,7 +709,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 ```
 
 - `InitializingBean`은 `afterPropertiesSet()` 메서드로 초기화를 지원<br/>
-- `DisposableBean`은` destory()`메서드로 소멸을 지원<br/><br/>
+- `DisposableBean`은 `destory()`메서드로 소멸을 지원<br/><br/>
 - <b>초기화, 소멸 인터페이스 단점</b><br/>
    -&nbsp;스프링 전용 인터페이스로 해당 코드가 스프링 전용 인터페이스에 의존<br/>
    -&nbsp;초기화, 소멸 메서드의 이름을 변경할 수 없다.<br/>
@@ -725,7 +722,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
 <br/>
 
-#### &nbsp;● 설정 정보 사용 특징
+### &nbsp;● 설정 정보 사용 특징
 > -&nbsp;메서드 이름을 자유롭게 줄 수 있다.<br/>
 > -&nbsp;스프링 빈이 스프링 코드에 의존하지 않는다.<br/>
 > -&nbsp;코드가 아니라 설정 정보를 사용하기 때문에 코드를 고칠 수 없는 외부 라이브러리에도 초기화, 종료
@@ -733,7 +730,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
 <br/>
 
-#### &nbsp;● 종료 메서드 추론
+### &nbsp;● 종료 메서드 추론
 > -&nbsp;`@Bean의 destroyMethod` 속성<br/>
 > -&nbsp;라이브러리는 대부분 `close`, `shutdown`이라는 이름의 종료 메서드를 사용<br/>
 > -&nbsp;@Bean의 `destroyMethod`는 기본값이 `(inferred)`(추론)으로 등록되어 있다.<br/>
@@ -744,7 +741,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 <br/>
 
 ### ■ 애노테이션 @PostConstruct, @PreDestroy
-&nbsp;&nbsp;: `@PostConstruct`, `@PreDesstroy`두 애노테이션을 사용하면 편리하게 초기화와 종료 실행가능
+&nbsp;&nbsp;: `@PostConstruct`, `@PreDesstroy` 두 애노테이션을 사용하면 편리하게 초기화와 종료 실행가능
 
 <br/>
 
@@ -761,8 +758,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 ```
  ✔ 정리
   - @PostConstruct, @PreDestroy 애노테이션을 사용
-  - 코드를 고칠 수 없는 외부 라이브러리를 초기화, 종료해야 하면 @Bean 의 initMethod, destroyMethod
-를 사용
+  - 코드를 고칠 수 없는 외부 라이브러리를 초기화, 종료해야 하면 @Bean 의 initMethod, destroyMethod 를 사용
 ```
    
 <br/>
@@ -774,7 +770,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
 <br/>
 
-#### &nbsp;● 스프링이 지원하는 다양한 스코프
+### &nbsp;● 스프링이 지원하는 다양한 스코프
 > -&nbsp;<b>싱글톤</b>: 기본 스코프, 스프링 컨테이너의 시작과 종료까지 유지되는 가장 넓은 범위의 스코프<br/>
 > -&nbsp;<b>프로토타입</b>: 스프링 컨테이너는 프로토타입 빈의 생성과 의존관계 주입까지만 관여하고 더는 관리하지 않는 짧은 범위의 스코프<br/><br/>
 > -&nbsp;<b>웹 관련 스코프</b>
@@ -788,7 +784,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
 <br/>
 
-#### &nbsp;● 싱글톤 빈 요청
+### &nbsp;● 싱글톤 빈 요청
 <img src="https://github.com/BlueWings2017/BlueWings2017.github.io/blob/main/post-img/TeamC/springYujung3.jpg?raw=true" width="640" height="auto"/>
 
 > ① 싱글톤 스코프의 빈을 스프링 컨테이너에 요청<br/>
@@ -797,7 +793,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
 <br/>
 
-#### &nbsp;● 프로토타입 빈 요청
+### &nbsp;● 프로토타입 빈 요청
 <img src="https://github.com/BlueWings2017/BlueWings2017.github.io/blob/main/post-img/TeamC/springYujung4.jpg?raw=true" width="640" height="auto"/>&nbsp;&nbsp;
 <img src="https://github.com/BlueWings2017/BlueWings2017.github.io/blob/main/post-img/TeamC/springYujung5.jpg?raw=true" width="640" height="auto"/>
 
@@ -817,7 +813,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
    
 <br/>
 
-#### &nbsp;● 프로토타입 빈의 특징 정리
+### &nbsp;● 프로토타입 빈의 특징 정리
 > -&nbsp;스프링 컨테이너에 요청할 때 마다 새로 생성<br/>
 > -&nbsp;스프링 컨테이너는 프로토타입 빈의 생성과 의존관계 주입 그리고 초기화까지만 관여<br/>
 > -&nbsp;종료 메서드가 호출되지 않는다.<br/>
@@ -830,7 +826,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
 <br/>
 
-#### &nbsp;● 스프링 컨테이너에 프로토타입 빈 직접 요청1
+### &nbsp;● 스프링 컨테이너에 프로토타입 빈 직접 요청1
 <img src="https://github.com/BlueWings2017/BlueWings2017.github.io/blob/main/post-img/TeamC/springYujung6.jpg?raw=true" width="640" height="auto"/>
 
 > ① 클라이언트A는 스프링 컨테이너에 프로토타입 빈을 요청<br/>
@@ -840,7 +836,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
 <br/>
 
-#### &nbsp;● 스프링 컨테이너에 프로토타입 빈 직접 요청2
+### &nbsp;● 스프링 컨테이너에 프로토타입 빈 직접 요청2
 <img src="https://github.com/BlueWings2017/BlueWings2017.github.io/blob/main/post-img/TeamC/springYujung7.jpg?raw=true" width="640" height="auto"/>
 
 > ① 클라이언트B는 스프링 컨테이너에 프로토타입 빈을 요청<br/>
@@ -850,12 +846,12 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
 <br/>
 
-#### &nbsp;● 싱글톤에서 프로토타입 빈 사용
+### &nbsp;● 싱글톤에서 프로토타입 빈 사용
 <img src="https://github.com/BlueWings2017/BlueWings2017.github.io/blob/main/post-img/TeamC/springYujung8.jpg?raw=true" width="640" height="auto"/>&nbsp;&nbsp;
 <img src="https://github.com/BlueWings2017/BlueWings2017.github.io/blob/main/post-img/TeamC/springYujung9.jpg?raw=true" width="640" height="auto"/>&nbsp;&nbsp;
 <img src="https://github.com/BlueWings2017/BlueWings2017.github.io/blob/main/post-img/TeamC/springYujung10.jpg?raw=true" width="640" height="auto"/>
 
-> -&nbsp;`clientBean` 은 싱글톤이므로 보통 스프링 컨테이너 생성 시점에 함께 생성.. 의존관계 주입도 발생<br/>
+> -&nbsp;`clientBean`은 싱글톤이므로 보통 스프링 컨테이너 생성 시점에 함께 생성.. 의존관계 주입도 발생<br/>
 > ① `clientBean`은 의존관계 자동 주입을 사용.. 주입 시점에 스프링 컨테이너에 프로토타입 빈을
 요청<br/>
 > ② 스프링 컨테이너는 프로토타입 빈을 생성해서 clientBean 에 반환.. 프로토타입 빈의 count 필드
@@ -863,13 +859,10 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 > -&nbsp;`clientBean` 은 프로토타입 빈을 내부 필드에 보관(참조값을 보관)<br/>
 > -&nbsp;클라이언트 A는 `clientBean`을 스프링 컨테이너에 요청해서 받는다.싱글톤이므로 항상 같은
 `clientBean`이 반환된다.<br/>
-> ③ 클라이언트 A는 `clientBean.logic()` 을 호출<br/>
+> ③ 클라이언트 A는 `clientBean.logic()`을 호출<br/>
 > ④ `clientBean`은 prototypeBean의 `addCount()`를 호출해서 프로토타입 빈의 count를 증가.. count값이 1<br/>
-> -&nbsp;클라이언트 B는 `clientBean`을 스프링 컨테이너에 요청해서 받는다. 싱글톤이므로 항상 같은
-`clientBean`이 반환된다.<br/>
-> -&nbsp;★<b>clientBean이 내부에 가지고 있는 프로토타입 빈은 이미 과거에 주입이 끝난
-빈. 주입 시점에 스프링 컨테이너에 요청해서 프로토타입 빈이 새로 생성이 된 것이지, 사용할 때마다
-새로 생성되는 것은 X</b><br/>
+> -&nbsp;클라이언트 B는 `clientBean`을 스프링 컨테이너에 요청해서 받는다. 싱글톤이므로 항상 같은 `clientBean`이 반환된다.<br/>
+> -&nbsp;★<b>clientBean이 내부에 가지고 있는 프로토타입 빈은 이미 과거에 주입이 끝난 빈.<br/> 주입 시점에 스프링 컨테이너에 요청해서 프로토타입 빈이 새로 생성이 된 것이지, 사용할 때마다 새로 생성되는 것은 X</b><br/>
 > ⑤ 클라이언트 B는 `clientBean.logic()`을 호출<br/>
 > ⑥ `clientBean`은 prototypeBean의 `addCount()`를 호출해서 프로토타입 빈의 count를 증가한다. 
 원래 count 값이 1이었으므로 2가 된다.<br/>
@@ -885,8 +878,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 ```
 [ 특징 ]
 - ObjectFactory: 기능이 단순, 별도의 라이브러리 필요 없음, 스프링에 의존
-- ObjectProvider: ObjectFactory 상속, 옵션, 스트림 처리 등 편의 기능이 많고 별도의 라이브러리 필요
-없음.. 스프링에 의존
+- ObjectProvider: ObjectFactory 상속, 옵션, 스트림 처리 등 편의 기능이 많고 별도의 라이브러리 필요없음.. 스프링에 의존
 ```
 
 <br/>
@@ -915,14 +907,14 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
 <br/>
 
-#### &nbsp;● 웹 스코프의 특징
+### &nbsp;● 웹 스코프의 특징
 > -&nbsp;웹 스코프는 웹 환경에서만 동작<br/>
 > -&nbsp;웹 스코프는 프로토타입과 다르게 스프링이 해당 스코프의 종료시점까지 관리하기 때문에 종료 메서드가
 호출된다
 
 <br/>
 
-#### &nbsp;● 웹 스코프의 종류
+### &nbsp;● 웹 스코프의 종류
 > -<b>request</b>: HTTP 요청 하나가 들어오고 나갈 때 까지 유지되는 스코프.. 각각의 HTTP 요청마다 별도의 빈 인스턴스가 생성되고 관리된다.<br/>
 > -<b>session</b>: HTTP Session과 동일한 생명주기를 가지는 스코프<br/>
 > -<b>application</b>: 서블릿 컨텍스트(`ServletContext`)와 동일한 생명주기를 가지는 스코프<br/>
@@ -951,11 +943,9 @@ public class MyLogger {
 
 <br/>
 
-#### &nbsp;● 웹 스코프와 프록시 동작 원리
+### &nbsp;● 웹 스코프와 프록시 동작 원리
 > *&nbsp;<b>CGLIB라는 라이브러리로 내 클래스를 상속 받은 가짜 프록시 객체를 만들어서 주입</b><br/>
-> -&nbsp;`@Scope`의 `proxyMode = ScopedProxyMode.TARGET_CLASS)`를 설정하면 스프링 컨테이너는 CGLIB
-라는 바이트코드를 조작하는 라이브러리를 사용해서, MyLogger를 상속받은 가짜 프록시 객체를
-생성
+> -&nbsp;`@Scope`의 `proxyMode = ScopedProxyMode.TARGET_CLASS)`를 설정하면 스프링 컨테이너는 CGLIB라는 바이트코드를 조작하는 라이브러리를 사용해서<br/> &nbsp;&nbsp;MyLogger를 상속받은 가짜 프록시 객체를 생성
 
 <br/>
 
@@ -963,16 +953,14 @@ public class MyLogger {
  ✔ 동작 정리
   - CGLIB라는 라이브러리로 내 클래스를 상속 받은 가짜 프록시 객체를 만들어서 주입
   - 가짜 프록시 객체는 실제 요청이 오면 그때 내부에서 실제 빈을 요청하는 위임 로직이 들어있다.
-  - 가짜 프록시 객체는 실제 request scope와는 관계가 없다.. 가짜이고, 내부에 단순한 위임 로직만
-있다.(싱글톤처럼 동작)
+  - 가짜 프록시 객체는 실제 request scope와는 관계가 없다.. 가짜이고, 내부에 단순한 위임 로직만 있다.(싱글톤처럼 동작)
 ```
    
 <br/>
 
 ```
  ✔ 특징 정리
-  - 프록시 객체 덕분에 클라이언트는 마치 싱글톤 빈을 사용하듯이 편리하게 request scope를 사용할 수
-있다.
+  - 프록시 객체 덕분에 클라이언트는 마치 싱글톤 빈을 사용하듯이 편리하게 request scope를 사용할 수 있다.
   - 애노테이션 설정 변경만으로 원본 객체를 프록시 객체로 대체할 수 있다. → 다형성과 DI 컨테이너가 가진 큰 강점
   - 꼭 웹 스코프가 아니어도 프록시는 사용할 수 있다.
 ```
